@@ -13,7 +13,7 @@ playGame.addEventListener('click',
         let userChoice = document.getElementById("user_choice").value;
 
         //  e inserisce un numero da 1 a 5.
-        let numUser = document.getElementById('user_number').value;
+        let numUser = parseInt( document.getElementById('user_number').value );
 
         console.log(userChoice);
         console.log(numUser);
@@ -21,22 +21,25 @@ playGame.addEventListener('click',
     
         // Generiamo un numero random (sempre da 1 a 5) per il computer (usando una funzione).
         const numPc = randomNumOneToFive ();
-        console.log( "random num one to five is " + numPc );
+        document.getElementById('pc_number').innerHTML = numPc;
+        // console.log( "random num one to five is " + numPc );
 
         // Sommiamo i due numeri.
         const sum = sumNum ( numUser, numPc );
-        console.log( "sum is " + sum );
+        // console.log( "sum is " + sum );
+
 
         // Stabiliamo se la somma dei due numeri è pari o dispari (usando una funzione) 
         const risposta = evenOdd ( sum );
-        console.log("la risposta è " + risposta );
+        document.getElementById('answer').innerHTML = risposta;
+        // console.log("la risposta è " + risposta );
 
-        // // Dichiariamo chi ha vinto.
-        // if ( risposta === userChoice) {
-        //     alert( "hai Vinto!!!" );
-        // } else {
-        //     alert ( "Ha vinto il pc" )
-        // }
+        // Dichiariamo chi ha vinto.
+        if ( risposta === userChoice) {
+            document.getElementById('winner').innerHTML = "User";
+        } else {
+            document.getElementById('winner').innerHTML = "Pc";
+        }
     }
 )
 
